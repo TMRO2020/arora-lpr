@@ -5807,8 +5807,8 @@ Portfel Arora</translation>
         <translation>Musisz określić masternodeprivkey w konfiguracji. Aby uzyskać pomoc, zapoznaj się z dokumentacją.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 może być używany tylko w sieci mainnet)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 może być używany tylko w sieci mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -5819,8 +5819,8 @@ Portfel Arora</translation>
         <translation>(domyślnie: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(musi być 23101 dla mainnetu)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(musi być 23201 dla mainnetu)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

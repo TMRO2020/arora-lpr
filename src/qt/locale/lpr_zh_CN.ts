@@ -6313,8 +6313,8 @@ Arora核心钱包</translation>
         <translation>您必须在配置中指定一个主节点privkey。有关帮助，请参阅文档。</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101只可在网上使用)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201只可在网上使用)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6325,8 +6325,8 @@ Arora核心钱包</translation>
         <translation>(默认: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(主网必须为23101)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(主网必须为23201)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

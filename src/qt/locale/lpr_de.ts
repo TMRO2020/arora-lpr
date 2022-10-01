@@ -6004,8 +6004,8 @@ Arora Wallet</source>
         <translation>Sie müssen einen privaten Masternode-Schlüssel in der Konfiguration festlegen. Bitte nutzen Sie die Dokumentation zwecks Hilfe.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 kann nur im Mainnet verwendet werden)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 kann nur im Mainnet verwendet werden)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6016,8 +6016,8 @@ Arora Wallet</source>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(muss im Mainnet 23101 sein)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(muss im Mainnet 23201 sein)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

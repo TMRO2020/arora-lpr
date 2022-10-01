@@ -6332,8 +6332,8 @@ Portefeuille Arora</translation>
         <translation>Vous devez spécifier une masternodeprivkey dans la configuration. Veuillez consulter la documentation pour obtenir de l'aide.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 ne peut être utilisé que pour le mainnet)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 ne peut être utilisé que pour le mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6344,8 +6344,8 @@ Portefeuille Arora</translation>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(doit être 23101 pour le mainnet)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(doit être 23201 pour le mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

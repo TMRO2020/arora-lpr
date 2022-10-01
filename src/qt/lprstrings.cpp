@@ -225,10 +225,10 @@ QT_TRANSLATE_NOOP("arora-core", ""
 QT_TRANSLATE_NOOP("arora-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("arora-core", "(23101 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("arora-core", "(23201 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("arora-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("arora-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("arora-core", "(must be 23101 for mainnet)"),
+QT_TRANSLATE_NOOP("arora-core", "(must be 23201 for mainnet)"),
 QT_TRANSLATE_NOOP("arora-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("arora-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("arora-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),

@@ -50,7 +50,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "ARORA - LPR Coin date creation 30/09/2022";
+    const char* pszTimestamp = "ARORA - LPR was Created on 30/09/2022";
     const CScript genesisOutputScript = CScript() << ParseHex("04c10e83b2703ccf322f7dba62dd5855ac4c10bd015814ce121ba3260b2573b8810c02c0582aed05b4deb9c4b77b26d92428c61256cd44774babea0c073b2ed0c9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -105,7 +105,48 @@ public:
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
 
-        genesis = CreateGenesisBlock(1664528399, 2511963, 0x1e0ffff0, 1, 0 * COIN);
+        uint32_t nGenesisTime = 1664604683; // 2021-02-03T13:51:41+00:00
+
+                          arith_uint256 test;
+                          bool fNegative;
+                          bool fOverflow;
+                          test.SetCompact(0x1e0ffff0, &fNegative, &fOverflow);
+                          std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+
+                          int genesisNonce = 0;
+                          uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+                          uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+                          for (int i=0;i<40000000;i++) {
+                              genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e0ffff0, 1, 0 * COIN);
+                              //genesis.hashPrevBlock = TempHashHolding;
+                              consensus.hashGenesisBlock = genesis.GetHash();
+
+                              arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+                              if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+                                  BestBlockHash = consensus.hashGenesisBlock;
+                                  std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
+                                  std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
+                              }
+
+                              TempHashHolding = consensus.hashGenesisBlock;
+
+                              if (BestBlockHashArith < test) {
+                                  genesisNonce = i - 1;
+                                  break;
+                              }
+                              //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
+                          }
+                           std::cout << "\n";
+                           std::cout << "\n";
+                           std::cout << "\n";
+
+                           std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
+                           std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
+                           std::cout << "Genesis Merkle 0x" << genesis.hashMerkleRoot.GetHex() << std::endl;
+
+                         exit(0);
+
+        genesis = CreateGenesisBlock(1664604683, 2511963, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         assert(consensus.hashGenesisBlock == uint256S("0x0000096b1bb972ee939f25511f3c08b17f1deb531084b8f4e56ef7d6d83ddebc"));
         assert(genesis.hashMerkleRoot == uint256S("0xa30aa70fdefaa04f5225aeb311dc52f12a470346b9d4fd7db8a1ea2d1a11aa65"));
@@ -157,11 +198,11 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x31;
-        pchMessageStart[1] = 0x51;
-        pchMessageStart[2] = 0x93;
-        pchMessageStart[3] = 0xba;
-        nDefaultPort = 23101; //23101
+        pchMessageStart[0] = 0x73;
+        pchMessageStart[1] = 0x22;
+        pchMessageStart[2] = 0x57;
+        pchMessageStart[3] = 0xcd;
+        nDefaultPort = 23201; //23201
 
         // Note that of those with the service bits flag, most only support a subset of possible options
 
@@ -169,10 +210,10 @@ public:
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
         base58Prefixes[STAKING_ADDRESS] = std::vector<unsigned char>(1, 23);     // starting with 'A'
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
-        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x03)(0x2D)(0x25)(0x31).convert_to_container<std::vector<unsigned char> >();
-        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x3C).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x03)(0x2D)(0x25)(0x71).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x1C).convert_to_container<std::vector<unsigned char> >();
         // BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
-        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x20)(0x00)(0x00)(0x41).convert_to_container<std::vector<unsigned char> >();
+        base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x20)(0x00)(0x00)(0x11).convert_to_container<std::vector<unsigned char> >();
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
     }
@@ -254,7 +295,7 @@ public:
         pchMessageStart[1] = 0x1d;
         pchMessageStart[2] = 0xcc;
         pchMessageStart[3] = 0x5e;
-        nDefaultPort = 23103;
+        nDefaultPort = 23203;
 
         vFixedSeeds.clear();
         vSeeds.clear();

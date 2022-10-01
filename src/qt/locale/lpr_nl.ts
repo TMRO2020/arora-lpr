@@ -6352,8 +6352,8 @@ Arora Portemonnee</translation>
         <translation>Je moet een masternodeprivkey opgeven in de configuratie. Raadpleeg de documentatie voor hulp.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 kan alleen op mainnet worden gebruikt)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 kan alleen op mainnet worden gebruikt)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6364,8 +6364,8 @@ Arora Portemonnee</translation>
         <translation>(standaard: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(moet 23101 voor mainnet zijn)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(moet 23201 voor mainnet zijn)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

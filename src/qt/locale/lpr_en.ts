@@ -7853,8 +7853,8 @@ Arora Wallet</source>
     </message>
     <message>
         <location line="+3"/>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation type="unfinished">(23101 could be used only on mainnet)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation type="unfinished">(23201 could be used only on mainnet)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7868,7 +7868,7 @@ Arora Wallet</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>(must be 23101 for mainnet)</source>
+        <source>(must be 23201 for mainnet)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

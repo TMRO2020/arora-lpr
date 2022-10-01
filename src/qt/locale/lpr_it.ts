@@ -5593,8 +5593,8 @@ Portafoglio Arora.</translation>
         <translation>È necessario specificare una chiave masternodepriv nella configurazione. Consultare la documentazione per assistenza.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 potrebbe essere utilizzato solo su mainnet)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 potrebbe essere utilizzato solo su mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -5605,8 +5605,8 @@ Portafoglio Arora.</translation>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(deve essere 23101 per mainnet)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(deve essere 23201 per mainnet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

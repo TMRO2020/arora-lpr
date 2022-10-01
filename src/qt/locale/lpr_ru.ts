@@ -6163,8 +6163,8 @@ Arora Wallet</source>
         <translation>Вы должны указать в  строке приложенный ключ. Пожалуйста, обратитесь к документации для получения справки</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 можно использовать только в сети)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 можно использовать только в сети)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -6175,8 +6175,8 @@ Arora Wallet</source>
         <translation>(неуплата: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(должен быть 23101 для mainet)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(должен быть 23201 для mainet)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>

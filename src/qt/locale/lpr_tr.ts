@@ -5602,8 +5602,8 @@ Hoşgeldiniz</translation>
         <translation>Konfigürasyonda bir masternodeprivkey belirlemelisiniz.  Lütfen dokümantasyona bakınız.</translation>
     </message>
     <message>
-        <source>(23101 could be used only on mainnet)</source>
-        <translation>(23101 sadece mainnet üzerinde kullanılabilir)</translation>
+        <source>(23201 could be used only on mainnet)</source>
+        <translation>(23201 sadece mainnet üzerinde kullanılabilir)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -5614,8 +5614,8 @@ Hoşgeldiniz</translation>
         <translation>(default: 1)</translation>
     </message>
     <message>
-        <source>(must be 23101 for mainnet)</source>
-        <translation>(mainnet için 23101 olmalıdır)</translation>
+        <source>(must be 23201 for mainnet)</source>
+        <translation>(mainnet için 23201 olmalıdır)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
