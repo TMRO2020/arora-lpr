@@ -67,12 +67,12 @@ static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits
  */
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of
-    (0, uint256S("0000096b1bb972ee939f25511f3c08b17f1deb531084b8f4e56ef7d6d83ddebc"))
+    (0, uint256S("00000a029879a6a250584d537d1b014cf4d5aa37b48f97dc0a9bdf0a18e8ebbe"))
     ;
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1664528399, // * UNIX timestamp of last checkpoint block
+    1664604683, // * UNIX timestamp of last checkpoint block
     0,    // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     0        // * estimated number of transactions per day after checkpoint
@@ -105,51 +105,10 @@ public:
         networkID = CBaseChainParams::MAIN;
         strNetworkID = "main";
 
-        uint32_t nGenesisTime = 1664604683; // 2021-02-03T13:51:41+00:00
-
-                          arith_uint256 test;
-                          bool fNegative;
-                          bool fOverflow;
-                          test.SetCompact(0x1e0ffff0, &fNegative, &fOverflow);
-                          std::cout << "Test threshold: " << test.GetHex() << "\n\n";
-
-                          int genesisNonce = 0;
-                          uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
-                          uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-                          for (int i=0;i<40000000;i++) {
-                              genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e0ffff0, 1, 0 * COIN);
-                              //genesis.hashPrevBlock = TempHashHolding;
-                              consensus.hashGenesisBlock = genesis.GetHash();
-
-                              arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
-                              if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
-                                  BestBlockHash = consensus.hashGenesisBlock;
-                                  std::cout << BestBlockHash.GetHex() << " Nonce: " << i << "\n";
-                                  std::cout << "   PrevBlockHash: " << genesis.hashPrevBlock.GetHex() << "\n";
-                              }
-
-                              TempHashHolding = consensus.hashGenesisBlock;
-
-                              if (BestBlockHashArith < test) {
-                                  genesisNonce = i - 1;
-                                  break;
-                              }
-                              //std::cout << consensus.hashGenesisBlock.GetHex() << "\n";
-                          }
-                           std::cout << "\n";
-                           std::cout << "\n";
-                           std::cout << "\n";
-
-                           std::cout << "hashGenesisBlock to 0x" << BestBlockHash.GetHex() << std::endl;
-                           std::cout << "Genesis Nonce to " << genesisNonce << std::endl;
-                           std::cout << "Genesis Merkle 0x" << genesis.hashMerkleRoot.GetHex() << std::endl;
-
-                         exit(0);
-
-        genesis = CreateGenesisBlock(1664604683, 2511963, 0x1e0ffff0, 1, 0 * COIN);
+        genesis = CreateGenesisBlock(1664604683, 672556, 0x1e0ffff0, 1, 0 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x0000096b1bb972ee939f25511f3c08b17f1deb531084b8f4e56ef7d6d83ddebc"));
-        assert(genesis.hashMerkleRoot == uint256S("0xa30aa70fdefaa04f5225aeb311dc52f12a470346b9d4fd7db8a1ea2d1a11aa65"));
+        assert(consensus.hashGenesisBlock == uint256S("0x00000a029879a6a250584d537d1b014cf4d5aa37b48f97dc0a9bdf0a18e8ebbe"));
+        assert(genesis.hashMerkleRoot == uint256S("0x372f182b9f9c84a4b04393e27a66c5061027c8677a413df4813187ba771e7884"));
 
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.powLimit   = ~UINT256_ZERO >> 20;   // Arora starting difficulty is 1 / 2^12
