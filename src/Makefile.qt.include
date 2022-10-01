@@ -1,0 +1,725 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+bin_PROGRAMS += qt/lpr-qt
+EXTRA_LIBRARIES += qt/libbitcoinqt.a
+
+# arora qt core #
+include Makefile.qt_locale.include
+
+QT_FORMS_UI = \
+  qt/forms/addressbookpage.ui \
+  qt/forms/askpassphrasedialog.ui \
+  qt/forms/coincontroldialog.ui \
+  qt/forms/editaddressdialog.ui \
+  qt/forms/helpmessagedialog.ui \
+  qt/forms/intro.ui \
+  qt/forms/openuridialog.ui \
+  qt/forms/optionsdialog.ui \
+  qt/forms/rpcconsole.ui \
+  qt/arora/forms/loadingdialog.ui \
+  qt/arora/forms/snackbar.ui \
+  qt/arora/forms/navmenuwidget.ui \
+  qt/arora/forms/lockunlock.ui \
+  qt/arora/forms/expandablebutton.ui \
+  qt/arora/forms/receivedialog.ui \
+  qt/arora/forms/topbar.ui \
+  qt/arora/forms/txrow.ui \
+  qt/arora/forms/dashboardwidget.ui \
+  qt/arora/forms/addresslabelrow.ui \
+  qt/arora/forms/contactdropdownrow.ui \
+  qt/arora/forms/mninfodialog.ui \
+  qt/arora/forms/optionbutton.ui \
+  qt/arora/forms/masternodewizarddialog.ui \
+  qt/arora/forms/mnrow.ui \
+  qt/arora/forms/masternodeswidget.ui \
+  qt/arora/forms/myaddressrow.ui \
+  qt/arora/forms/csrow.ui \
+  qt/arora/forms/sendchangeaddressdialog.ui \
+  qt/arora/forms/sendconfirmdialog.ui \
+  qt/arora/forms/sendcustomfeedialog.ui \
+  qt/arora/forms/sendchangeaddressdialog.ui \
+  qt/arora/forms/sendmultirow.ui \
+  qt/arora/forms/send.ui \
+  qt/arora/forms/addnewaddressdialog.ui \
+  qt/arora/forms/addnewcontactdialog.ui \
+  qt/arora/forms/requestdialog.ui \
+  qt/arora/forms/receivewidget.ui \
+  qt/arora/forms/tooltipmenu.ui \
+  qt/arora/forms/addresseswidget.ui \
+  qt/arora/forms/defaultdialog.ui \
+  qt/arora/forms/coldstakingwidget.ui \
+  qt/arora/settings/forms/settingsbackupwallet.ui \
+  qt/arora/settings/forms/settingsexportcsv.ui \
+  qt/arora/settings/forms/settingsbittoolwidget.ui \
+  qt/arora/settings/forms/settingsconsolewidget.ui \
+  qt/arora/settings/forms/settingsdisplayoptionswidget.ui \
+  qt/arora/settings/forms/settingsfaqwidget.ui \
+  qt/arora/settings/forms/settingsinformationwidget.ui \
+  qt/arora/settings/forms/settingsmainoptionswidget.ui \
+  qt/arora/settings/forms/settingsmultisenddialog.ui \
+  qt/arora/settings/forms/settingsmultisendwidget.ui \
+  qt/arora/settings/forms/settingssignmessagewidgets.ui \
+  qt/arora/settings/forms/settingswalletoptionswidget.ui \
+  qt/arora/settings/forms/settingswalletrepairwidget.ui \
+  qt/arora/settings/forms/settingswidget.ui \
+  qt/arora/forms/welcomecontentwidget.ui \
+  qt/arora/forms/splash.ui
+
+QT_MOC_CPP = \
+  qt/moc_addressbookpage.cpp \
+  qt/moc_addresstablemodel.cpp \
+  qt/moc_askpassphrasedialog.cpp \
+  qt/moc_bantablemodel.cpp \
+  qt/moc_bitcoinaddressvalidator.cpp \
+  qt/arora/moc_lprgui.cpp \
+  qt/moc_bitcoinunits.cpp \
+  qt/moc_clientmodel.cpp \
+  qt/moc_coincontroldialog.cpp \
+  qt/moc_coincontroltreewidget.cpp \
+  qt/moc_csvmodelwriter.cpp \
+  qt/moc_editaddressdialog.cpp \
+  qt/moc_guiutil.cpp \
+  qt/moc_intro.cpp \
+  qt/moc_macdockiconhandler.cpp \
+  qt/moc_macnotificationhandler.cpp \
+  qt/moc_notificator.cpp \
+  qt/moc_openuridialog.cpp \
+  qt/moc_optionsdialog.cpp \
+  qt/moc_optionsmodel.cpp \
+  qt/moc_peertablemodel.cpp \
+  qt/moc_paymentserver.cpp \
+  qt/moc_qvalidatedlineedit.cpp \
+  qt/moc_qvaluecombobox.cpp \
+  qt/moc_recentrequeststablemodel.cpp \
+  qt/moc_rpcconsole.cpp \
+  qt/moc_splashscreen.cpp \
+  qt/moc_trafficgraphwidget.cpp \
+  qt/moc_transactiondesc.cpp \
+  qt/moc_transactionfilterproxy.cpp \
+  qt/moc_transactiontablemodel.cpp \
+  qt/moc_utilitydialog.cpp \
+  qt/moc_walletmodel.cpp \
+  qt/arora/moc_loadingdialog.cpp \
+  qt/arora/moc_pwidget.cpp \
+  qt/arora/moc_focuseddialog.cpp \
+  qt/arora/moc_snackbar.cpp \
+  qt/arora/moc_navmenuwidget.cpp \
+  qt/arora/moc_lockunlock.cpp \
+  qt/arora/moc_expandablebutton.cpp \
+  qt/arora/moc_furabstractlistitemdelegate.cpp \
+  qt/arora/moc_receivedialog.cpp \
+  qt/arora/moc_pfborderimage.cpp \
+  qt/arora/moc_topbar.cpp \
+  qt/arora/moc_txrow.cpp \
+  qt/arora/moc_dashboardwidget.cpp \
+  qt/arora/moc_addresslabelrow.cpp \
+  qt/arora/moc_contactdropdownrow.cpp \
+  qt/arora/moc_mninfodialog.cpp \
+  qt/arora/moc_optionbutton.cpp \
+  qt/arora/moc_coldstakingmodel.cpp \
+  qt/arora/moc_mnmodel.cpp \
+  qt/arora/moc_masternodewizarddialog.cpp \
+  qt/arora/moc_mnrow.cpp \
+  qt/arora/moc_masternodeswidget.cpp \
+  qt/arora/moc_myaddressrow.cpp \
+  qt/arora/moc_csrow.cpp \
+  qt/arora/moc_contactsdropdown.cpp \
+  qt/arora/moc_sendchangeaddressdialog.cpp \
+  qt/arora/moc_sendconfirmdialog.cpp \
+  qt/arora/moc_sendcustomfeedialog.cpp \
+  qt/arora/moc_sendchangeaddressdialog.cpp \
+  qt/arora/moc_sendmultirow.cpp \
+  qt/arora/moc_send.cpp \
+  qt/arora/moc_addnewaddressdialog.cpp \
+  qt/arora/moc_addnewcontactdialog.cpp \
+  qt/arora/moc_requestdialog.cpp \
+  qt/arora/moc_receivewidget.cpp \
+  qt/arora/moc_tooltipmenu.cpp \
+  qt/arora/moc_addresseswidget.cpp \
+  qt/arora/moc_defaultdialog.cpp \
+  qt/arora/moc_coldstakingwidget.cpp \
+  qt/arora/settings/moc_settingsbackupwallet.cpp \
+  qt/arora/settings/moc_settingsexportcsv.cpp \
+  qt/arora/settings/moc_settingsbittoolwidget.cpp \
+  qt/arora/settings/moc_settingsconsolewidget.cpp \
+  qt/arora/settings/moc_settingsdisplayoptionswidget.cpp \
+  qt/arora/settings/moc_settingsfaqwidget.cpp \
+  qt/arora/settings/moc_settingsinformationwidget.cpp \
+  qt/arora/settings/moc_settingsmainoptionswidget.cpp \
+  qt/arora/settings/moc_settingsmultisenddialog.cpp \
+  qt/arora/settings/moc_settingsmultisendwidget.cpp \
+  qt/arora/settings/moc_settingssignmessagewidgets.cpp \
+  qt/arora/settings/moc_settingswalletoptionswidget.cpp \
+  qt/arora/settings/moc_settingswalletrepairwidget.cpp \
+  qt/arora/settings/moc_settingswidget.cpp \
+  qt/arora/moc_welcomecontentwidget.cpp \
+  qt/arora/moc_splash.cpp
+
+BITCOIN_MM = \
+  qt/macdockiconhandler.mm \
+  qt/macnotificationhandler.mm
+
+QT_MOC = \
+  qt/arora.moc \
+  qt/intro.moc \
+  qt/rpcconsole.moc \
+  qt/arora/settings/moc_settingsconsolewidget.cpp
+
+QT_QRC_CPP = qt/qrc_lpr.cpp
+if TARGET_WINDOWS
+QT_QRC = qt/arora.qrc
+else
+QT_QRC = qt/lpr1.qrc
+endif
+QT_QRC_LOCALE_CPP = qt/qrc_lpr_locale.cpp
+QT_QRC_LOCALE = qt/lpr_locale.qrc
+
+PROTOBUF_CC = qt/paymentrequest.pb.cc
+PROTOBUF_H = qt/paymentrequest.pb.h
+PROTOBUF_PROTO = qt/paymentrequest.proto
+
+BITCOIN_QT_H = \
+  qt/addressbookpage.h \
+  qt/addresstablemodel.h \
+  qt/askpassphrasedialog.h \
+  qt/bantablemodel.h \
+  qt/bitcoinaddressvalidator.h \
+  qt/arora/lprgui.h \
+  qt/bitcoinunits.h \
+  qt/clientmodel.h \
+  qt/coincontroldialog.h \
+  qt/coincontroltreewidget.h \
+  qt/csvmodelwriter.h \
+  qt/editaddressdialog.h \
+  qt/guiconstants.h \
+  qt/guiutil.h \
+  qt/intro.h \
+  qt/macdockiconhandler.h \
+  qt/macnotificationhandler.h \
+  qt/networkstyle.h \
+  qt/notificator.h \
+  qt/openuridialog.h \
+  qt/optionsdialog.h \
+  qt/optionsmodel.h \
+  qt/paymentrequestplus.h \
+  qt/paymentserver.h \
+  qt/peertablemodel.h \
+  qt/platformstyle.h \
+  qt/qvalidatedlineedit.h \
+  qt/qvaluecombobox.h \
+  qt/recentrequeststablemodel.h \
+  qt/rpcconsole.h \
+  qt/splashscreen.h \
+  qt/trafficgraphwidget.h \
+  qt/transactiondesc.h \
+  qt/transactionfilterproxy.h \
+  qt/transactionrecord.h \
+  qt/transactiontablemodel.h \
+  qt/utilitydialog.h \
+  qt/walletmodel.h \
+  qt/walletmodeltransaction.h \
+  qt/arora/prunnable.h \
+  qt/arora/pfborderimage.h \
+  qt/arora/loadingdialog.h \
+  qt/winshutdownmonitor.h \
+  qt/arora/pwidget.h \
+  qt/arora/focuseddialog.h \
+  qt/arora/guitransactionsutils.h \
+  qt/arora/snackbar.h \
+  qt/arora/navmenuwidget.h \
+  qt/arora/lockunlock.h \
+  qt/arora/receivedialog.h \
+  qt/arora/furlistrow.h \
+  qt/arora/furabstractlistitemdelegate.h \
+  qt/arora/txviewholder.h \
+  qt/arora/qtutils.h \
+  qt/arora/expandablebutton.h \
+  qt/arora/topbar.h \
+  qt/arora/txrow.h \
+  qt/arora/addressholder.h \
+  qt/arora/addressfilterproxymodel.h \
+  qt/arora/dashboardwidget.h \
+  qt/arora/addresslabelrow.h \
+  qt/arora/contactdropdownrow.h \
+  qt/arora/mninfodialog.h \
+  qt/arora/optionbutton.h \
+  qt/arora/coldstakingmodel.h \
+  qt/arora/mnmodel.h \
+  qt/arora/masternodewizarddialog.h \
+  qt/arora/mnrow.h \
+  qt/arora/masternodeswidget.h \
+  qt/arora/myaddressrow.h \
+  qt/arora/csrow.h \
+  qt/arora/contactsdropdown.h \
+  qt/arora/sendchangeaddressdialog.h \
+  qt/arora/sendconfirmdialog.h \
+  qt/arora/sendcustomfeedialog.h \
+  qt/arora/sendchangeaddressdialog.h \
+  qt/arora/sendmultirow.h \
+  qt/arora/send.h \
+  qt/arora/addnewaddressdialog.h \
+  qt/arora/addnewcontactdialog.h \
+  qt/arora/requestdialog.h \
+  qt/arora/receivewidget.h \
+  qt/arora/tooltipmenu.h \
+  qt/arora/addresseswidget.h \
+  qt/arora/defaultdialog.h \
+  qt/arora/coldstakingwidget.h \
+  qt/arora/settings/settingsbackupwallet.h \
+  qt/arora/settings/settingsexportcsv.h \
+  qt/arora/settings/settingsbittoolwidget.h \
+  qt/arora/settings/settingsconsolewidget.h \
+  qt/arora/settings/settingsdisplayoptionswidget.h \
+  qt/arora/settings/settingsfaqwidget.h \
+  qt/arora/settings/settingsinformationwidget.h \
+  qt/arora/settings/settingsmainoptionswidget.h \
+  qt/arora/settings/settingsmultisenddialog.h \
+  qt/arora/settings/settingsmultisendwidget.h \
+  qt/arora/settings/settingssignmessagewidgets.h \
+  qt/arora/settings/settingswalletoptionswidget.h \
+  qt/arora/settings/settingswalletrepairwidget.h \
+  qt/arora/settings/settingswidget.h \
+  qt/arora/welcomecontentwidget.h \
+  qt/arora/splash.h
+
+RES_ICONS = \
+  qt/res/icons/bitcoin.ico \
+  qt/res/icons/bitcoin.png \
+  qt/res/icons/lock_closed.png \
+  qt/res/icons/lock_open.png \
+  qt/res/icons/ic-transaction-received.png \
+  qt/res/icons/ic-transaction-mint.png \
+  qt/res/icons/ic-transaction-sent.png \
+  qt/res/icons/ic-transaction-staked.png \
+  qt/arora/res/img/bg-dashboard-banner.png \
+  qt/arora/res/img/bg-multi-number-dark.png \
+  qt/arora/res/img/ic-check-locked.png \
+  qt/arora/res/img/ic-nav-address.png \
+  qt/arora/res/img/ic-update.png \
+  qt/arora/res/img/bg-multi-number.png \
+  qt/arora/res/img/ic-check-mint-off.png \
+  qt/arora/res/img/ic-nav-cold-staking.png \
+  qt/arora/res/img/ic-nav-cold-staking-active.png \
+  qt/arora/res/img/ic-nav-dashboard-active.png \
+  qt/arora/res/img/ic-wallet-status-locked.png \
+  qt/arora/res/img/bg-splash.png \
+  qt/arora/res/img/bg-splash.png \
+  qt/arora/res/img/ic-check-mint.png \
+  qt/arora/res/img/ic-nav-dashboard-hover.png \
+  qt/arora/res/img/ic-wallet-status-staking.png \
+  qt/arora/res/img/ic-check-peers-off.png \
+  qt/arora/res/img/ic-nav-dashboard.png \
+  qt/arora/res/img/ic-wallet-status-unlocked.png \
+  qt/arora/res/img/ic-check-peers.png \
+  qt/arora/res/img/ic-nav-master-active.png \
+  qt/arora/res/img/ic-watch-password-white.png \
+  qt/arora/res/img/bg-welcome-container.jpg \
+  qt/arora/res/img/bg-welcome-container.png \
+  qt/arora/res/img/bg-welcome-container.png \
+  qt/arora/res/img/bg-welcome-container@2x.png \
+  qt/arora/res/img/bg-welcome-container@3x.png \
+  qt/arora/res/img/ic-check-staking-off.png \
+  qt/arora/res/img/ic-nav-master-hover.png \
+  qt/arora/res/img/ic-watch-password.png \
+  qt/arora/res/img/bg-welcome.jpg \
+  qt/arora/res/img/bg-welcome.png \
+  qt/arora/res/img/bg-welcome@2x.jpg \
+  qt/arora/res/img/bg-welcome@3x.jpg \
+  qt/arora/res/img/bg-welcome.png \
+  qt/arora/res/img/ic-check-staking.png \
+  qt/arora/res/img/ic-nav-master.png \
+  qt/arora/res/img/img-dashboard-banner.jpg \
+  qt/arora/res/img/btn-radio-active.png \
+  qt/arora/res/img/ic-check-sync-off.png \
+  qt/arora/res/img/ic-nav-privacy-active.png \
+  qt/arora/res/img/img-empty-contacts.png \
+  qt/arora/res/img/btn-radio-off.png \
+  qt/arora/res/img/ic-check-sync.png \
+  qt/arora/res/img/ic-nav-privacy-hover.png \
+  qt/arora/res/img/img-empty-dark-contacts.png \
+  qt/arora/res/img/ic-contact-arrow-down.png \
+  qt/arora/res/img/ic-contact-arrow-down-white.png \
+  qt/arora/res/img/ic-check-sync.png \
+  qt/arora/res/img/ic-check-faq.png \
+  qt/arora/res/img/ic-nav-privacy.png \
+  qt/arora/res/img/img-empty-dark-error.png \
+  qt/arora/res/img/ic-add-label.png \
+  qt/arora/res/img/ic-pending.png \
+  qt/arora/res/img/ic-check-theme-dark.png \
+  qt/arora/res/img/ic-nav-receive-active.png \
+  qt/arora/res/img/img-empty-dark-masternode.png \
+  qt/arora/res/img/ic-add-liliac.png \
+  qt/arora/res/img/ic-check-theme-light.png \
+  qt/arora/res/img/ic-nav-receive-hover.png \
+  qt/arora/res/img/img-empty-dark-multisend.png \
+  qt/arora/res/img/ic-add-purple.png \
+  qt/arora/res/img/ic-check-white.png \
+  qt/arora/res/img/ic-nav-receive.png \
+  qt/arora/res/img/img-empty-dark-peers.png \
+  qt/arora/res/img/ic-add.png \
+  qt/arora/res/img/ic-check.png \
+  qt/arora/res/img/ic-nav-send-active.png \
+  qt/arora/res/img/img-empty-dark-staking-off.png \
+  qt/arora/res/img/img-empty-dark-staking-on.png \
+  qt/arora/res/img/ic-address-book-grey.png \
+  qt/arora/res/img/ic-chevron-left.png \
+  qt/arora/res/img/ic-nav-send-hover.png \
+  qt/arora/res/img/img-empty-dark-transactions.png \
+  qt/arora/res/img/ic-address-book-white.png \
+  qt/arora/res/img/ic-chevron-right.png \
+  qt/arora/res/img/ic-nav-send.png \
+  qt/arora/res/img/img-empty-error.png \
+  qt/arora/res/img/ic-address-book.png \
+  qt/arora/res/img/ic-clear-liliac.png \
+  qt/arora/res/img/ic-nav-settings-active.png \
+  qt/arora/res/img/img-empty-masternode.png \
+  qt/arora/res/img/ic-address-send-white.png \
+  qt/arora/res/img/ic-clear-purple.png \
+  qt/arora/res/img/ic-nav-settings-hover.png \
+  qt/arora/res/img/img-empty-multisend.png \
+  qt/arora/res/img/ic-address-send.png \
+  qt/arora/res/img/ic-close-white.png \
+  qt/arora/res/img/ic-nav-settings.png \
+  qt/arora/res/img/img-empty-peers.png \
+  qt/arora/res/img/img-empty-privacy.png \
+  qt/arora/res/img/img-empty-privacy-dark.png \
+  qt/arora/res/img/ic-arrow-drop-down-white.png \
+  qt/arora/res/img/ic-close.png \
+  qt/arora/res/img/ic-radio-liliac-on.png \
+  qt/arora/res/img/img-empty-staking-off.png \
+  qt/arora/res/img/ic-arrow-drop-down.png \
+  qt/arora/res/img/ic-coin-lpr.png \
+  qt/arora/res/img/ic-receive-off.png \
+  qt/arora/res/img/img-empty-staking-on.png \
+  qt/arora/res/img/ic-arrow-drop-up-white.png \
+  qt/arora/res/img/ic-receive-on.png \
+  qt/arora/res/img/img-empty-transactions.png \
+  qt/arora/res/img/ic-arrow-drop-up.png \
+  qt/arora/res/img/ic-received.png \
+  qt/arora/res/img/img-logo-arora.png \
+  qt/arora/res/img/ic-arrow-drop-white-down.png \
+  qt/arora/res/img/ic-combo-box.png \
+  qt/arora/res/img/ic-send.png \
+  qt/arora/res/img/img-logo-arora@2x.png \
+  qt/arora/res/img/ic-arrow-purple-down.png \
+  qt/arora/res/img/ic-connect.png \
+  qt/arora/res/img/ic-submenu-lock.png \
+  qt/arora/res/img/img-logo-arora@3x.png \
+  qt/arora/res/img/img-logo-arora.png \
+  qt/arora/res/img/ic-arrow-right-white.png \
+  qt/arora/res/img/ic-arrow-left-white.png \
+  qt/arora/res/img/ic-arrow-left.png \
+  qt/arora/res/img/ic-copy-liliac.png \
+  qt/arora/res/img/ic-submenu-staking.png \
+  qt/arora/res/img/img-nav-logo-arora.png \
+  qt/arora/res/img/ic-arrow-right.png \
+  qt/arora/res/img/ic-copy.png \
+  qt/arora/res/img/ic-copy-big.png \
+  qt/arora/res/img/ic-copy-big-white.png \
+  qt/arora/res/img/ic-submenu-unlock.png \
+  qt/arora/res/img/img-nav-logo.png \
+  qt/arora/res/img/ic-arrow-white-left.png \
+  qt/arora/res/img/ic-exit.png \
+  qt/arora/res/img/ic-switch-liliac-on.png \
+  qt/arora/res/img/img-nav-logo.png \
+  qt/arora/res/img/ic-arrow-white-right.png \
+  qt/arora/res/img/ic-expand.png \
+  qt/arora/res/img/ic-switch-off.png \
+  qt/arora/res/img/img-qr-test-big.png \
+  qt/arora/res/img/ic-check-active.png \
+  qt/arora/res/img/ic-folder.png \
+  qt/arora/res/img/ic-switch-on.png \
+  qt/arora/res/img/img-qr-test.png \
+  qt/arora/res/img/ic-check-box.png \
+  qt/arora/res/img/ic-check-box-dark-active.png \
+  qt/arora/res/img/ic-check-box-indeterminate.png \
+  qt/arora/res/img/ic-check-box-liliac-indeterminate.png \
+  qt/arora/res/img/ic-label-liliac.png \
+  qt/arora/res/img/ic-transaction-warning.png \
+  qt/arora/res/img/ic-transaction-mint.png \
+  qt/arora/res/img/ic-transaction-mint-inactive.png \
+  qt/arora/res/img/ic-check-cold-staking.png \
+  qt/arora/res/img/ic-check-cold-staking-off.png \
+  qt/arora/res/img/ic-check-cold-staking-enabled.png \
+  qt/arora/res/img/dark/ic-transaction-cs-contract.png \
+  qt/arora/res/img/dark/ic-transaction-cs-contract-inactive.png \
+  qt/arora/res/img/img-qr.png \
+  qt/arora/res/img/ic-check-connect-off.png \
+  qt/arora/res/img/ic-check-tor-off.png \
+  qt/arora/res/img/ic-check-tor.png \
+  qt/arora/res/img/ic-label.png \
+  qt/arora/res/img/ic-transaction-received.png \
+  qt/arora/res/img/dark/ic-transaction-received.png \
+  qt/arora/res/img/dark/ic-transaction-warning.png \
+  qt/arora/res/img/dark/ic-transaction-mint.png \
+  qt/arora/res/img/dark/ic-transaction-mint-inactive.png \
+  qt/arora/res/img/ic-transaction-received-inactive.png \
+  qt/arora/res/img/dark/ic-transaction-received-inactive.png \
+  qt/arora/res/img/img-welcome-step1.png \
+  qt/arora/res/img/ic-check-connect.png \
+  qt/arora/res/img/ic-menu-hover.png \
+  qt/arora/res/img/ic-transaction-sent.png \
+  qt/arora/res/img/ic-transaction-sent-inactive.png \
+  qt/arora/res/img/dark/ic-transaction-sent.png \
+  qt/arora/res/img/dark/ic-transaction-sent-inactive.png \
+  qt/arora/res/img/img-welcome-step2.png \
+  qt/arora/res/img/ic-check-dark.png \
+  qt/arora/res/img/ic-mint.png \
+  qt/arora/res/img/ic-transaction-staked.png \
+  qt/arora/res/img/ic-transaction-staked-inactive.png \
+  qt/arora/res/img/dark/ic-transaction-staked.png \
+  qt/arora/res/img/dark/ic-transaction-staked-inactive.png \
+  qt/arora/res/img/img-welcome-step3.png \
+  qt/arora/res/img/ic-check-liliac-on.png \
+  qt/arora/res/img/ic-nav-address-active.png \
+  qt/arora/res/img/ic-unlock-staking.png \
+  qt/arora/res/img/img-welcome-step4.png \
+  qt/arora/res/img/ic-check-locked-off.png \
+  qt/arora/res/img/ic-nav-address-hover.png \
+  qt/arora/res/img/ic-update-liliac.png \
+  qt/arora/res/img/ic-arrow-drop-down-purple.png \
+  qt/arora/res/img/ic-arrow-drop-up-purple.png \
+  qt/arora/res/img/ic-check-liliac-indeterminate.png \
+  qt/arora/res/img/ic-check-box-liliac-indeterminate.png \
+  qt/arora/res/img/ic-transaction-stake-delegated.png \
+  qt/arora/res/img/ic-transaction-stake-delegated-inactive.png \
+  qt/arora/res/img/ic-transaction-stake-hot.png \
+  qt/arora/res/img/ic-transaction-stake-hot-inactive.png \
+  qt/arora/res/img/dark/ic-transaction-stake-hot.png \
+  qt/arora/res/img/dark/ic-transaction-stake-hot-inactive.png \
+  qt/arora/res/img/dark/ic-transaction-stake-delegated.png \
+  qt/arora/res/img/dark/ic-transaction-stake-delegated-inactive.png \
+  qt/arora/res/img/ic-transaction-cs-contract.png \
+  qt/arora/res/img/ic-transaction-cs-contract-inactive.png \
+  qt/arora/res/img/ic-check-box-indeterminate.png \
+  qt/arora/res/img/ani-loading-dark.gif \
+  qt/arora/res/img/ani-loading.gif
+
+
+
+BITCOIN_QT_BASE_CPP = \
+  qt/bantablemodel.cpp \
+  qt/bitcoinaddressvalidator.cpp \
+  qt/arora/lprgui.cpp \
+  qt/bitcoinunits.cpp \
+  qt/clientmodel.cpp \
+  qt/csvmodelwriter.cpp \
+  qt/guiutil.cpp \
+  qt/intro.cpp \
+  qt/networkstyle.cpp \
+  qt/notificator.cpp \
+  qt/optionsdialog.cpp \
+  qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/platformstyle.cpp \
+  qt/qvalidatedlineedit.cpp \
+  qt/qvaluecombobox.cpp \
+  qt/rpcconsole.cpp \
+  qt/splashscreen.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/utilitydialog.cpp
+
+BITCOIN_QT_WINDOWS_CPP = qt/winshutdownmonitor.cpp
+
+BITCOIN_QT_WALLET_CPP = \
+  qt/addressbookpage.cpp \
+  qt/addresstablemodel.cpp \
+  qt/askpassphrasedialog.cpp \
+  qt/coincontroldialog.cpp \
+  qt/coincontroltreewidget.cpp \
+  qt/editaddressdialog.cpp \
+  qt/openuridialog.cpp \
+  qt/paymentrequestplus.cpp \
+  qt/paymentserver.cpp \
+  qt/recentrequeststablemodel.cpp \
+  qt/transactiondesc.cpp \
+  qt/transactionfilterproxy.cpp \
+  qt/transactionrecord.cpp \
+  qt/transactiontablemodel.cpp \
+  qt/walletmodel.cpp \
+  qt/walletmodeltransaction.cpp \
+  qt/arora/loadingdialog.cpp \
+  qt/arora/pwidget.cpp \
+  qt/arora/focuseddialog.cpp \
+  qt/arora/guitransactionsutils.cpp \
+  qt/arora/snackbar.cpp \
+  qt/arora/navmenuwidget.cpp \
+  qt/arora/lockunlock.cpp \
+  qt/arora/receivedialog.cpp \
+  qt/arora/furabstractlistitemdelegate.cpp \
+  qt/arora/txviewholder.cpp \
+  qt/arora/qtutils.cpp \
+  qt/arora/expandablebutton.cpp \
+  qt/arora/topbar.cpp \
+  qt/arora/txrow.cpp \
+  qt/arora/addressholder.cpp \
+  qt/arora/addressfilterproxymodel.cpp \
+  qt/arora/dashboardwidget.cpp \
+  qt/arora/addresslabelrow.cpp \
+  qt/arora/contactdropdownrow.cpp \
+  qt/arora/contactsdropdown.cpp \
+  qt/arora/optionbutton.cpp \
+  qt/arora/mninfodialog.cpp \
+  qt/arora/coldstakingmodel.cpp \
+  qt/arora/mnmodel.cpp \
+  qt/arora/masternodewizarddialog.cpp \
+  qt/arora/mnrow.cpp \
+  qt/arora/masternodeswidget.cpp \
+  qt/arora/myaddressrow.cpp \
+  qt/arora/csrow.cpp \
+  qt/arora/sendchangeaddressdialog.cpp \
+  qt/arora/sendconfirmdialog.cpp \
+  qt/arora/sendcustomfeedialog.cpp \
+  qt/arora/sendchangeaddressdialog.cpp \
+  qt/arora/sendmultirow.cpp \
+  qt/arora/send.cpp \
+  qt/arora/addnewaddressdialog.cpp \
+  qt/arora/addnewcontactdialog.cpp \
+  qt/arora/requestdialog.cpp \
+  qt/arora/receivewidget.cpp \
+  qt/arora/tooltipmenu.cpp \
+  qt/arora/addresseswidget.cpp \
+  qt/arora/defaultdialog.cpp \
+  qt/arora/coldstakingwidget.cpp \
+  qt/arora/settings/settingsbackupwallet.cpp \
+  qt/arora/settings/settingsexportcsv.cpp \
+  qt/arora/settings/settingsbittoolwidget.cpp \
+  qt/arora/settings/settingsconsolewidget.cpp \
+  qt/arora/settings/settingsdisplayoptionswidget.cpp \
+  qt/arora/settings/settingsfaqwidget.cpp \
+  qt/arora/settings/settingsinformationwidget.cpp \
+  qt/arora/settings/settingsmainoptionswidget.cpp \
+  qt/arora/settings/settingsmultisenddialog.cpp \
+  qt/arora/settings/settingsmultisendwidget.cpp \
+  qt/arora/settings/settingssignmessagewidgets.cpp \
+  qt/arora/settings/settingswalletoptionswidget.cpp \
+  qt/arora/settings/settingswalletrepairwidget.cpp \
+  qt/arora/settings/settingswidget.cpp \
+  qt/arora/welcomecontentwidget.cpp \
+  qt/arora/splash.cpp
+
+
+BITCOIN_QT_CPP = $(BITCOIN_QT_BASE_CPP)
+if TARGET_WINDOWS
+BITCOIN_QT_CPP += $(BITCOIN_QT_WINDOWS_CPP)
+endif
+if ENABLE_WALLET
+BITCOIN_QT_CPP += $(BITCOIN_QT_WALLET_CPP)
+endif
+
+RES_IMAGES = \
+  qt/res/images/about.png \
+  qt/res/images/lpr.png
+
+RES_CSS = \
+  qt/res/css/default.css \
+  qt/arora/res/css/style_dark.css \
+  qt/arora/res/css/style_light.css
+
+BITCOIN_RC = qt/res/lpr-qt-res.rc
+
+BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
+  -I$(builddir)/qt/forms -DQT_NO_KEYWORDS
+
+qt_libbitcoinqt_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_libbitcoinqt_a_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+qt_libbitcoinqt_a_OBJCXXFLAGS = $(AM_OBJCXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS)
+
+nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
+  $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
+
+# forms/foo.h -> forms/ui_foo.h
+QT_FORMS_H=$(join $(dir $(QT_FORMS_UI)),$(addprefix ui_, $(notdir $(QT_FORMS_UI:.ui=.h))))
+
+# Most files will depend on the forms and moc files as includes. Generate them
+# before anything else.
+$(QT_MOC): $(QT_FORMS_H)
+$(qt_libbitcoinqt_a_OBJECTS) $(qt_lpr_qt_OBJECTS) : | $(QT_MOC)
+
+#Generating these with a half-written protobuf header leads to wacky results.
+#This makes sure it's done.
+$(QT_MOC): $(PROTOBUF_H)
+$(QT_MOC_CPP): $(PROTOBUF_H)
+
+# lpr-qt binary #
+qt_lpr_qt_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS) $(SVG_CFLAGS) $(CHARTS_CFLAGS)
+qt_lpr_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+qt_lpr_qt_SOURCES = qt/arora.cpp
+if TARGET_DARWIN
+  qt_lpr_qt_SOURCES += $(BITCOIN_MM)
+endif
+if TARGET_WINDOWS
+  qt_lpr_qt_SOURCES += $(BITCOIN_RC)
+endif
+qt_lpr_qt_LDADD = qt/libbitcoinqt.a $(LIBBITCOIN_SERVER)
+if ENABLE_WALLET
+qt_lpr_qt_LDADD += $(LIBBITCOIN_UTIL) $(LIBBITCOIN_WALLET)
+endif
+if ENABLE_ZMQ
+qt_lpr_qt_LDADD += $(LIBBITCOIN_ZMQ) $(ZMQ_LIBS)
+endif
+qt_lpr_qt_LDADD += $(LIBBITCOIN_CLI) $(LIBBITCOIN_COMMON) $(LIBBITCOIN_UTIL) $(LIBBITCOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) $(LIBLEVELDB_SSE42) $(LIBMEMENV) \
+  $(BOOST_LIBS) $(QT_LIBS) $(QT_DBUS_LIBS) $(QR_LIBS) $(PROTOBUF_LIBS) $(SVG_LIBS) $(CHARTS_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+qt_lpr_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_lpr_qt_LIBTOOLFLAGS = $(AM_LIBTOOLFLAGS) --tag CXX
+
+#locale/foo.ts -> locale/foo.qm
+QT_QM=$(QT_TS:.ts=.qm)
+
+SECONDARY: $(QT_QM)
+
+$(srcdir)/qt/lprstrings.cpp: $(libbitcoin_server_a_SOURCES) $(libbitcoin_wallet_a_SOURCES) $(libbitcoin_common_a_SOURCES) $(libbitcoin_zmq_a_SOURCES) $(libbitcoin_util_a_SOURCES)
+	@test -n $(XGETTEXT) || echo "xgettext is required for updating translations"
+	$(AM_V_GEN) cd $(srcdir); XGETTEXT=$(XGETTEXT) PACKAGE_NAME="$(PACKAGE_NAME)" $(PYTHON) ../share/qt/extract_strings_qt.py $^
+
+translate: $(srcdir)/qt/lprstrings.cpp $(QT_FORMS_UI) $(QT_FORMS_UI) $(BITCOIN_QT_BASE_CPP) qt/arora.cpp $(BITCOIN_QT_WINDOWS_CPP) $(BITCOIN_QT_WALLET_CPP) $(BITCOIN_QT_H) $(BITCOIN_MM)
+	@test -n $(LUPDATE) || echo "lupdate is required for updating translations"
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LUPDATE) $^ -locations relative -no-obsolete -ts $(srcdir)/qt/locale/lpr_en.ts
+
+$(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
+	@test -f $(RCC)
+	@cp -f $< $(@D)/temp_$(<F)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name lpr_locale $(@D)/temp_$(<F) | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+	@rm $(@D)/temp_$(<F)
+
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(PROTOBUF_H)
+	@test -f $(RCC)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name arora $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+CLEAN_QT = $(nodist_qt_libbitcoinqt_a_SOURCES) $(QT_QM) $(QT_FORMS_H) qt/*.gcda qt/*.gcno qt/temp_lpr_locale.qrc
+
+CLEANFILES += $(CLEAN_QT)
+
+lpr_qt_clean: FORCE
+	rm -f $(CLEAN_QT) $(qt_libbitcoinqt_a_OBJECTS) $(qt_lpr_qt_OBJECTS) qt/lpr-qt$(EXEEXT) $(LIBBITCOINQT)
+
+lpr_qt : qt/lpr-qt$(EXEEXT)
+
+ui_%.h: %.ui
+	@test -f $(UIC)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(UIC) -o $@ $< || (echo "Error creating $@"; false)
+
+%.moc: %.cpp
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+moc_%.cpp: %.h
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(MOC) $(DEFAULT_INCLUDES) $(QT_INCLUDES) $(MOC_DEFS) $< | \
+	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
+
+%.qm: %.ts
+	@test -f $(LRELEASE)
+	@$(MKDIR_P) $(@D)
+	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(LRELEASE) -silent $< -qm $@

@@ -1,0 +1,8 @@
+/usr/bin/lpr-cli		--	gen_context(system_u:object_r:lpr_exec_t,s0)
+/usr/sbin/lprd		--	gen_context(system_u:object_r:lpr_exec_t,s0)
+/usr/lib(64)?/arora/lprd		--	gen_context(system_u:object_r:lpr_exec_t,s0)
+
+/etc/arora(/.*)?		gen_context(system_u:object_r:lpr_conf_t,s0)
+/var/lib/arora(/.*)?		gen_context(system_u:object_r:lpr_var_lib_t,s0)
+
+(/var)?/run/lprd(/.*)?   gen_context(system_u:object_r:lpr_var_run_t,s0)

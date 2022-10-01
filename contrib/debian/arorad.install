@@ -1,0 +1,3 @@
+usr/local/bin/lprd usr/bin
+usr/local/bin/lpr-cli usr/bin
+debian/examples/arora.conf etc/arora

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=Arora
+Comment=Arora P2P Cryptocurrency
+Comment[fr]=Arora, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Arora, eşten eşe kriptografik sanal para birimi
+Exec=lpr-qt %u
+Terminal=false
+Type=Application
+Icon=lpr128
+MimeType=x-scheme-handler/arora;
+Categories=Office;Finance;
+StartupWMClass=Arora-qt

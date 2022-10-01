@@ -1,0 +1,6 @@
+usr/local/bin/lpr-qt usr/bin
+share/pixmaps/lpr32.xpm usr/share/pixmaps
+share/pixmaps/lpr16.xpm usr/share/pixmaps
+share/pixmaps/lpr128.png usr/share/pixmaps
+debian/lpr-qt.desktop usr/share/applications
+debian/lpr-qt.protocol usr/share/kde4/services/

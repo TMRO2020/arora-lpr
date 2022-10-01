@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  lprd The LPR_Coin server.
+#
+#
+# chkconfig: 345 80 20
+# description: lprd
+# processname: lprd
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/lprd, see below
+if [ -f /etc/sysconfig/lprd ]; then
+        . /etc/sysconfig/lprd
+fi
+
+RETVAL=0
+
+prog=lprd
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/lprd
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/lprd}
+
+# lprd defaults to /usr/bin/lprd, override with BITCOIND_BIN
+bitcoind=${BITCOIND_BIN-/usr/bin/lprd}
+
+# lprd opts default to -disablewallet, override with BITCOIND_OPTS
+bitcoind_opts=${BITCOIND_OPTS}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $bitcoind $bitcoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
